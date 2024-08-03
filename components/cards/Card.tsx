@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { formatDateString } from '@/lib/utils';
 import DeleteThread from '../forms/DeleteThread';
+import EditThread from '../forms/EditThread';
 
 interface Props {
   id: string;
@@ -113,14 +114,20 @@ function Card({
             </div>
           </div>
         </div>
-
-        <DeleteThread
-          threadId={JSON.stringify(id)}
-          currentUserId={currentUserId}
-          authorId={author.id}
-          parentId={parentId}
-          isComment={isComment}
-        />
+        <div className="flex flex-row gap-2">
+          <EditThread
+            threadId={JSON.stringify(id)}
+            currentUserId={currentUserId}
+            authorId={author.id}
+          />
+          <DeleteThread
+            threadId={JSON.stringify(id)}
+            currentUserId={currentUserId}
+            authorId={author.id}
+            parentId={parentId}
+            isComment={isComment}
+          />
+        </div>
       </div>
 
       {!isComment && comments.length > 0 && (

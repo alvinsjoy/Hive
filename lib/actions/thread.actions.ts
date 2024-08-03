@@ -87,7 +87,33 @@ export async function createThread({
     throw new Error(`Failed to create buzz: ${error.message}`);
   }
 }
+export async function editThread({
+  threadId,
+  text,
+  path,
+}: {
+  threadId: string;
+  text: string;
+  path: string;
+}) {
+  try {
+    connectToDB();
 
+    const thread = await Thread.findById(threadId);
+
+    if (!thread) {
+      throw new Error('Buzz not found');
+    }
+
+    thread.text = text;
+
+    await thread.save();
+
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`Failed to edit the buzz: ${error.message}`);
+  }
+}
 async function fetchAllChildThreads(threadId: string): Promise<any[]> {
   const childThreads = await Thread.find({ parentId: threadId });
 
