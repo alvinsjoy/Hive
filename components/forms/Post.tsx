@@ -71,7 +71,10 @@ function Post({ userId }: Props) {
           )}
         />
 
-        <Button type="submit" className="bg-primary-500">
+        <Button
+          type="submit"
+          className="bg-primary-500 hover:bg-muted-500 transition-colors"
+        >
           Post a Buzz
         </Button>
       </form>
