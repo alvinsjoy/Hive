@@ -35,9 +35,9 @@ export async function updateUser({
   userId,
   bio,
   name,
+  path,
   username,
   image,
-  path,
 }: Params): Promise<void> {
   try {
     connectToDB();
