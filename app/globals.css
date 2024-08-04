@@ -114,8 +114,33 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #7878a3;
   }
+  .bg-auth {
+    background: linear-gradient(
+      to bottom,
+      #4fb576 0%,
+      #44c489 30%,
+      #28a9ae 46%,
+      #28a2b7 59%,
+      #4c7788 71%,
+      #6c4f63 86%,
+      #432c39 100%
+    );
+    background-blend-mode: multiply, multiply;
+    background-size: 400% 400%;
+    animation: colorTransition 16s infinite;
+  }
 }
-
+@keyframes colorTransition {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
 /* Clerk Responsive fix */
 .cl-organizationSwitcherTrigger .cl-userPreview .cl-userPreviewTextContainer {
   @apply max-sm:hidden;
