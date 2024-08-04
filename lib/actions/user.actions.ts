@@ -149,9 +149,8 @@ export async function getActivity(userId: string) {
     connectToDB();
 
     const userThreads = await Thread.find({ author: userId });
-
-    const childThreadIds = userThreads.reduce((acc: any, userThread: any) => {
-      //set type to any
+    /* @ts-ignore */
+    const childThreadIds = userThreads.reduce((acc, userThread) => {
       return acc.concat(userThread.children);
     }, []);
 
