@@ -12,7 +12,7 @@ const EditThread = ({ threadId, currentUserId, authorId }: Props) => {
   if (currentUserId !== authorId) return null;
 
   return (
-    <Link href={`/edit/${JSON.parse(threadId)}`}>
+    <Link href={`/thread/edit/${JSON.parse(threadId)}`}>
       <Image
         src="/assets/edit.svg"
         alt="edit buzz"
