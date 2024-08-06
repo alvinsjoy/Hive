@@ -4,32 +4,23 @@ Hive is a modern web application designed to enhance community engagement and so
 
 ## Features
 
-- **Onboarding and Profile Creation**
-Effortlessly set up and customize user profiles.
+- **Onboarding and Profile Creation:** Effortlessly set up and customize user profiles.
 
-- **Communities**
-Create communities, join as members, and post buzz as a community member.
+- **_Communities:** Create communities, join as members, and post thread (buzz) as a community member.
 
-- **Content Management (CRUD)**
-Create, read, update, and delete Threads (buzzes), Communities, and Profiles.
+- **_Content Management (CRUD):** Create, read, update, and delete threads (buzzes), Communities, and Profiles.
 
-- **Multi-level Comments**
-Engage in in-depth discussions with nested comments on buzzes.
+- **_Multi-level Comments:** Engage in in-depth discussions with nested comments on buzzes.
 
-- **Search**
-Discover and connect with profiles and communities using the search functionality.
+- **_Search:** Discover and connect with profiles and communities using the search functionality.
 
-- **Activity Feed**
-Stay updated with real-time notifications when other users comment on your buzz.
+- **_Activity Feed:** Stay updated with real-time notifications when other users comment on your buzz.
 
-- **Profile Tabs**
-Display a list of your buzzes and replies for easy access.
+- **_Profile Tabs:** Display a list of your buzzes and replies for easy access.
 
-- **Community Tabs**
-View buzzes made in the community and members of the community.
+- **_Community Tabs:** View buzzes made in the community and members of the community.
 
-- **Suggested Communities and Profiles**
-Explore new communities and profiles.
+- **_Suggested Communities and Profiles:** Explore new communities and profiles.
 
 ## Technologies Used
 
@@ -61,8 +52,7 @@ In order to install and run this project locally, you would need to have the fol
 
 ### Install and Run Locally
 
-**Step 1:**
-Clone this repository:
+**Step 1:** Clone this repository:
 
 ```bash
 git clone https://github.com/alvinsjoy/Hive.git
@@ -70,7 +60,6 @@ cd Hive
 ```
 
 **Step 2:**
-
 Create an `.env.local` file with the following values:
 
 ```env
