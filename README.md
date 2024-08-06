@@ -70,7 +70,7 @@ NEXT_CLERK_WEBHOOK_SECRET=
 
 - Create an [UploadThing](https://uploadthing.com) account and set the `UPLOADTHING_SECRET` and `UPLOADTHING_APP_ID` in `.env.local`.
 
-- Create a new webhook on [Clerk Dashboard](https://dashboard.clerk.dev). Select the evetnts, "organization", "organizationDomain", "organizationInvitation" and "organizationMembership". Get the signing secret and set it as `CLERK_WEBHOOK_SECRET` in `.env.local`.
+- Create a new webhook on [Clerk Dashboard](https://dashboard.clerk.dev). Select the events, "organization", "organizationDomain", "organizationInvitation" and "organizationMembership". Get the signing secret and set it as `CLERK_WEBHOOK_SECRET` in `.env.local`.
 
 **Step 3:**
 
