@@ -5,21 +5,13 @@ Hive is a modern web application designed to enhance community engagement and so
 ## Features
 
 - **Onboarding and Profile Creation:** Effortlessly set up and customize user profiles.
-
 - **Communities:** Create communities, join as members, and post thread (buzz) as a community member.
-
 - **Content Management (CRUD):** Create, read, update, and delete threads (buzzes), Communities, and Profiles.
-
 - **Multi-level Comments:** Engage in in-depth discussions with nested comments on buzzes.
-
 - **Search:** Discover and connect with profiles and communities using the search functionality.
-
 - **Activity Feed:** Stay updated with real-time notifications when other users comment on your buzz.
-
 - **Profile Tabs:** Display a list of your buzzes and replies for easy access.
-
 - **Community Tabs:** View buzzes made in the community and members of the community.
-
 - **Suggested Communities and Profiles:** Explore new communities and profiles.
 
 ## Technologies Used
