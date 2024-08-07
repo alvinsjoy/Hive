@@ -159,12 +159,13 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               </FormLabel>
               <FormControl>
                 <Input
+                  placeholder="Enter your name"
                   type="text"
                   className="account-form_input no-focus"
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-destructive" />
             </FormItem>
           )}
         />
@@ -179,12 +180,13 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               </FormLabel>
               <FormControl>
                 <Input
+                  placeholder="Enter your username"
                   type="text"
                   className="account-form_input no-focus"
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-destructive" />
             </FormItem>
           )}
         />
@@ -199,12 +201,13 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               </FormLabel>
               <FormControl>
                 <Textarea
+                  placeholder="Tell us about yourself"
                   rows={10}
                   className="account-form_input no-focus"
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-destructive" />
             </FormItem>
           )}
         />
