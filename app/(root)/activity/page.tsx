@@ -22,7 +22,13 @@ async function Page() {
         {activity.length > 0 ? (
           <>
             {activity.map((activity: any) => (
-              <Link key={activity._id} href={`/thread/${activity.parentId}`}>
+              <Link
+                key={activity.author._id}
+                href={`${
+                  (activity.parentId && `/thread/${activity.parentId}`) ||
+                  `/profile/${activity.author.id}`
+                }`}
+              >
                 <article className="activity-card">
                   <Image
                     src={activity.author.image}
@@ -31,13 +37,13 @@ async function Page() {
                     height={20}
                     className="rounded-full object-cover"
                   />
-                  <p className="!text-small-regular text-light-1">
-                    <span className="mr-1 text-primary-500">
-                      {activity.author.name}
-                    </span>
-                    {''}
-                    replied to your buzz
-                  </p>
+                  <ActivityComponent
+                    author={activity.author}
+                    createdAt={activity.createdAt}
+                    parentId={activity.parentId}
+                    activityType={activity.activityType}
+                    text={activity.text}
+                  />
                 </article>
               </Link>
             ))}
@@ -49,5 +55,17 @@ async function Page() {
     </>
   );
 }
+
+const ActivityComponent = ({ author, createdAt, activityType, text }: any) => (
+  <p className="!text-small-regular text-light-1">
+    <Link key={author._id} href={`/profile/${author.id}`}>
+      <span className="text-primary-500">{author.name}</span>
+    </Link>{' '}
+    <>
+      {activityType === 'reaction' && 'like your buzz'}
+      {text && `replied to your buzz`}
+    </>
+  </p>
+);
 
 export default Page;

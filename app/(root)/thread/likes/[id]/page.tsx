@@ -7,32 +7,30 @@ import Card from '@/components/cards/Card';
 import { fetchUser } from '@/lib/actions/user.actions';
 import {
   fetchThreadById,
-  getReactionsData,
+  getReactedUsersByThread,
+  isThreadReactedByUser,
 } from '@/lib/actions/thread.actions';
+import UserCard from '@/components/cards/UserCard';
 
-async function Page({ params }: { params: { id: string } }) {
+export const revalidate = 0;
+
+async function page({ params }: { params: { id: string } }) {
   if (!params.id) return null;
 
   const user = await currentUser();
-  if (!user) redirect('/signin');
+  if (!user) return null;
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect('/onboarding');
 
   const thread = await fetchThreadById(params.id);
 
-  const reactionsData = await getReactionsData({
-    userId: userInfo._id,
-    posts: thread.children,
-    parentId: thread._id,
-  });
+  const reactions = await getReactedUsersByThread(thread._id);
 
-  const {
-    parentReactions,
-    parentReactionState,
-    childrenReactions,
-    childrenReactionState,
-  } = reactionsData;
+  const reactionState = await isThreadReactedByUser({
+    threadId: thread._id,
+    userId: userInfo._id,
+  });
 
   return (
     <section className="relative">
@@ -46,8 +44,8 @@ async function Page({ params }: { params: { id: string } }) {
           community={thread.community}
           createdAt={thread.createdAt}
           comments={thread.children}
-          reactions={parentReactions.users}
-          reactState={parentReactionState}
+          reactions={reactions.users}
+          reactState={reactionState}
         />
       </div>
 
@@ -60,25 +58,26 @@ async function Page({ params }: { params: { id: string } }) {
       </div>
 
       <div className="mt-10">
-        {thread.children.map((childItem: any, idx: number) => (
-          <Card
-            key={childItem._id}
-            id={childItem._id}
-            currentUserId={user.id}
-            parentId={childItem.parentId}
-            content={childItem.text}
-            author={childItem.author}
-            community={childItem.community}
-            createdAt={childItem.createdAt}
-            comments={childItem.children}
-            reactions={childrenReactions[idx].users}
-            reactState={childrenReactionState[idx]}
-            isComment
-          />
-        ))}
+        <h1 className="head-text mb-10">People who likes</h1>
+        {thread.reactionsCount === 0 ? (
+          <p className="no-result">No users found</p>
+        ) : (
+          <>
+            {reactions.users.map((reaction: any) => (
+              <UserCard
+                key={reaction._id}
+                id={reaction._id}
+                name={reaction.name}
+                username={reaction.username}
+                imgUrl={reaction.image}
+                personType="User"
+              />
+            ))}
+          </>
+        )}
       </div>
     </section>
   );
 }
 
-export default Page;
+export default page;

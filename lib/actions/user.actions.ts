@@ -95,12 +95,14 @@ export async function fetchUserPosts(userId: string) {
 
 export async function fetchUsers({
   userId,
+  userIds,
   searchString = '',
   pageNumber = 1,
   pageSize = 20,
   sortBy = 'desc',
 }: {
   userId: string;
+  userIds?: string[];
   searchString?: string;
   pageNumber?: number;
   pageSize?: number;
