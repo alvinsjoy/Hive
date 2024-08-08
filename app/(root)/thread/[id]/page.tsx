@@ -1,12 +1,15 @@
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs/server';
+import { Metadata } from 'next';
 
 import Comment from '@/components/forms/Comment';
 import Card from '@/components/cards/Card';
 
 import { fetchUser } from '@/lib/actions/user.actions';
 import { fetchThreadById } from '@/lib/actions/thread.actions';
-
+export const metadata: Metadata = {
+  title: 'Buzz',
+};
 export const revalidate = 0;
 
 async function page({ params }: { params: { id: string } }) {

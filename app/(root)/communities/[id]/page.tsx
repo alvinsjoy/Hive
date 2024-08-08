@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs/server';
+import { Metadata } from 'next';
 
 import { communityTabs } from '@/constants';
 
@@ -9,10 +11,12 @@ import ProfileHeader from '@/components/shared/ProfileHeader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { fetchCommunityDetails } from '@/lib/actions/community.actions';
-
+export const metadata: Metadata = {
+  title: 'Community',
+};
 async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
-  if (!user) return null;
+  if (!user) redirect('/signin');
 
   const communityDetails = await fetchCommunityDetails(params.id);
 

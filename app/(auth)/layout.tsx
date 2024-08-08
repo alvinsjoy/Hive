@@ -1,18 +1,20 @@
 import React from 'react';
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-  title: 'SignIn/SignUp',
-  description: 'Auth',
+  title: {
+    template: '%s | Hive',
+    default: 'Hive',
+  },
+  description:
+    'Hive is a social app for community engagement with profiles, communities , buzzes, search, and activity feeds. Built with Next.js, MongoDB, and Clerk.',
 };
-
 export default function RootLayout({
   children,
 }: {

@@ -1,10 +1,13 @@
 import Post from '@/components/forms/Post';
+import { Metadata } from 'next';
 import { fetchThreadById } from '@/lib/actions/thread.actions';
 import { fetchUser } from '@/lib/actions/user.actions';
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import React from 'react';
-
+export const metadata: Metadata = {
+  title: 'Edit Buzz',
+};
 const Page = async ({ params }: { params: { id: string } }) => {
   if (!params.id) return null;
 
