@@ -12,6 +12,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@/components/ui/form';
 
 import { Input } from '@/components/ui/input';
@@ -72,6 +73,7 @@ function Comment({ threadId, currentUserImg, currentUserId }: Props) {
                   className="no-focus text-light-1 outline-none"
                 />
               </FormControl>
+              <FormMessage className="text-destructive" />
             </FormItem>
           )}
         />
