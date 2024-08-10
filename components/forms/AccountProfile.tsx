@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { usePathname, useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useToast } from '@/components/ui/use-toast';
 
 import {
   Form,
@@ -38,6 +39,7 @@ interface Props {
 }
 
 const AccountProfile = ({ user, btnTitle }: Props) => {
+  const { toast } = useToast();
   const router = useRouter();
   const pathname = usePathname();
   const { startUpload } = useUploadThing('media');
@@ -65,20 +67,33 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
         values.profile_photo = imgRes[0].url; // fileUrl -> url
       }
     }
+    try {
+      await updateUser({
+        name: values.name,
+        path: pathname,
+        username: values.username,
+        userId: user.id,
+        bio: values.bio,
+        image: values.profile_photo,
+      });
 
-    await updateUser({
-      name: values.name,
-      path: pathname,
-      username: values.username,
-      userId: user.id,
-      bio: values.bio,
-      image: values.profile_photo,
-    });
-
-    if (pathname === '/profile/edit') {
-      router.back();
-    } else {
-      router.push('/');
+      if (pathname === '/profile/edit') {
+        router.back();
+      } else {
+        router.push('/');
+      }
+    } catch (error) {
+      toast({
+        title: 'Error updating profile ⚠️',
+        description: 'There was a problem with your request.',
+        variant: 'destructive',
+      });
+    } finally {
+      toast({
+        title: 'Profile updated successfully 🎉',
+        description: 'Your profile has been updated successfully.',
+        variant: 'default',
+      });
     }
   };
 

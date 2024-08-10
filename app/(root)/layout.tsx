@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
 import { dark } from '@clerk/themes';
 import { Analytics } from '@vercel/analytics/react';
+import { Toaster } from '@/components/ui/toaster';
 
 import '../globals.css';
 import LeftSidebar from '@/components/shared/LeftSidebar';
@@ -41,6 +42,7 @@ export default function RootLayout({
             <RightSidebar />
           </main>
           <Bottombar />
+          <Toaster />
         </body>
       </html>
       <Analytics />

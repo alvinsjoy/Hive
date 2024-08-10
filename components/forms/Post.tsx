@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
 import { ThreadValidation } from '@/lib/validations/thread';
 import { createThread, editThread } from '@/lib/actions/thread.actions';
@@ -29,6 +30,7 @@ interface Props {
 function Post({ userId, threadId, threadText }: Props) {
   const router = useRouter();
   const pathname = usePathname();
+  const { toast } = useToast();
 
   const { organization } = useOrganization();
 
@@ -42,21 +44,49 @@ function Post({ userId, threadId, threadText }: Props) {
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
     if (threadId && threadText) {
-      await editThread({
-        threadId,
-        text: values.thread,
-        path: pathname,
-      });
+      try {
+        await editThread({
+          threadId,
+          text: values.thread,
+          path: pathname,
+        });
+        router.push('/');
+      } catch (error) {
+        toast({
+          title: '⚠️ Error updating buzz',
+          description: 'An error occurred while updating the buzz.',
+          variant: 'destructive',
+        });
+      } finally {
+        toast({
+          title: '🎉 Buzz updated',
+          description: 'Your buzz has been updated successfully.',
+          variant: 'default',
+        });
+      }
     } else {
-      await createThread({
-        text: values.thread,
-        author: userId,
-        communityId: organization ? organization.id : null,
-        path: pathname,
-      });
+      try {
+        await createThread({
+          text: values.thread,
+          author: userId,
+          communityId: organization ? organization.id : null,
+          path: pathname,
+        });
+        router.push('/');
+      } catch (error) {
+        toast({
+          title: '⚠️ Error posting buzz',
+          description: 'An error occurred while posting the buzz.',
+          variant: 'destructive',
+        });
+      } finally {
+        toast({
+          title: '🎉 Buzz posted',
+          description: 'Your buzz has been posted successfully.',
+          variant: 'default',
+        });
+      }
     }
-
-    router.push('/');
   };
 
   return (
