@@ -1,0 +1,27 @@
+name: Sync main to reactions
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  branch-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Push changes
+        run: |
+          git fetch origin
+          git checkout reactions
+          git merge main -X theirs
+          git push origin reactions
