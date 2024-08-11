@@ -12,10 +12,12 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@/components/ui/form';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
 import { CommentValidation } from '@/lib/validations/thread';
 import { addCommentToThread } from '@/lib/actions/thread.actions';
@@ -28,6 +30,7 @@ interface Props {
 
 function Comment({ threadId, currentUserImg, currentUserId }: Props) {
   const pathname = usePathname();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof CommentValidation>>({
     resolver: zodResolver(CommentValidation),
@@ -37,14 +40,27 @@ function Comment({ threadId, currentUserImg, currentUserId }: Props) {
   });
 
   const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
-    await addCommentToThread(
-      threadId,
-      values.thread,
-      JSON.parse(currentUserId),
-      pathname,
-    );
-
-    form.reset();
+    try {
+      await addCommentToThread(
+        threadId,
+        values.thread,
+        JSON.parse(currentUserId),
+        pathname,
+      );
+    } catch (error) {
+      toast({
+        title: '⚠️ Error adding comment',
+        description: 'An error occurred while adding the comment.',
+        variant: 'destructive',
+      });
+    } finally {
+      toast({
+        title: '🎉 Comment posted',
+        description: 'Your comment has been successfully posted.',
+        variant: 'default',
+      });
+      form.reset();
+    }
   };
 
   return (
@@ -72,6 +88,7 @@ function Comment({ threadId, currentUserImg, currentUserId }: Props) {
                   className="no-focus text-light-1 outline-none"
                 />
               </FormControl>
+              <FormMessage className="text-destructive" />
             </FormItem>
           )}
         />

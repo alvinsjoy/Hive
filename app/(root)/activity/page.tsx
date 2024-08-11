@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 
 import { fetchUser, getActivity } from '@/lib/actions/user.actions';
-
+export const metadata: Metadata = {
+  title: 'Activity',
+};
 async function Page() {
   const user = await currentUser();
   if (!user) redirect('/signin');

@@ -1,7 +1,9 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { dark } from '@clerk/themes';
+import { Analytics } from '@vercel/analytics/react';
+import { Toaster } from '@/components/ui/toaster';
 
 import '../globals.css';
 import LeftSidebar from '@/components/shared/LeftSidebar';
@@ -9,9 +11,13 @@ import Bottombar from '@/components/shared/Bottombar';
 import RightSidebar from '@/components/shared/RightSidebar';
 import Topbar from '@/components/shared/Topbar';
 
-export const metadata = {
-  title: 'Hive',
-  description: 'Hive app',
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Hive',
+    default: 'Hive',
+  },
+  description:
+    'Hive is a social app for community engagement with profiles, communities , buzzes, search, and activity feeds. Built with Next.js, MongoDB, and Clerk.',
 };
 const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({
@@ -36,8 +42,10 @@ export default function RootLayout({
             <RightSidebar />
           </main>
           <Bottombar />
+          <Toaster />
         </body>
       </html>
+      <Analytics />
     </ClerkProvider>
   );
 }

@@ -1,6 +1,8 @@
 import Image from 'next/image';
-import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
+import { currentUser } from '@clerk/nextjs/server';
+import { Metadata } from 'next';
+
 import { communityTabs } from '@/constants';
 
 import UserCard from '@/components/cards/UserCard';
@@ -9,7 +11,9 @@ import ProfileHeader from '@/components/shared/ProfileHeader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { fetchCommunityDetails } from '@/lib/actions/community.actions';
-
+export const metadata: Metadata = {
+  title: 'Community',
+};
 async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
   if (!user) redirect('/signin');

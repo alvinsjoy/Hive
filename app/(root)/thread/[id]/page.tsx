@@ -1,16 +1,18 @@
 import { redirect } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs/server';
+import { Metadata } from 'next';
 
 import Comment from '@/components/forms/Comment';
 import Card from '@/components/cards/Card';
 
 import { fetchUser } from '@/lib/actions/user.actions';
-import {
-  fetchThreadById,
-  getReactionsData,
-} from '@/lib/actions/thread.actions';
+import { fetchThreadById } from '@/lib/actions/thread.actions';
+export const metadata: Metadata = {
+  title: 'Buzz',
+};
+export const revalidate = 0;
 
-async function Page({ params }: { params: { id: string } }) {
+async function page({ params }: { params: { id: string } }) {
   if (!params.id) return null;
 
   const user = await currentUser();
@@ -54,7 +56,7 @@ async function Page({ params }: { params: { id: string } }) {
       <div className="mt-7">
         <Comment
           threadId={params.id}
-          currentUserImg={user.imageUrl}
+          currentUserImg={userInfo.image}
           currentUserId={JSON.stringify(userInfo._id)}
         />
       </div>

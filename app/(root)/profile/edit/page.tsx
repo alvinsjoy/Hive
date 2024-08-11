@@ -1,9 +1,11 @@
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
-
+import { Metadata } from 'next';
 import { fetchUser } from '@/lib/actions/user.actions';
 import AccountProfile from '@/components/forms/AccountProfile';
-
+export const metadata: Metadata = {
+  title: 'Edit Profile',
+};
 async function Page() {
   const user = await currentUser();
   if (!user) redirect('/signin');

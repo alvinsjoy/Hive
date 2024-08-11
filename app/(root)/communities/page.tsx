@@ -1,5 +1,6 @@
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 
 import Searchbar from '@/components/shared/Searchbar';
 import Pagination from '@/components/shared/Pagination';
@@ -7,7 +8,9 @@ import CommunityCard from '@/components/cards/CommunityCard';
 
 import { fetchUser } from '@/lib/actions/user.actions';
 import { fetchCommunities } from '@/lib/actions/community.actions';
-
+export const metadata: Metadata = {
+  title: 'Communities',
+};
 async function Page({
   searchParams,
 }: {
