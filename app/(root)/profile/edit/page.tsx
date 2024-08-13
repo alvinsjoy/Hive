@@ -17,7 +17,9 @@ async function Page() {
     id: user.id,
     objectId: userInfo?._id,
     username: userInfo ? userInfo?.username : user.username,
-    name: userInfo ? userInfo?.name : user.firstName ?? '',
+    name: userInfo
+      ? userInfo?.name
+      : `${user.firstName} ${user.lastName}` ?? '',
     bio: userInfo ? userInfo?.bio : '',
     image: userInfo ? userInfo?.image : user.imageUrl,
   };
