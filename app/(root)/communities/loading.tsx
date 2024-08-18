@@ -3,7 +3,7 @@ function Loading() {
   return (
     <>
       <h1 className="head-text">Communities</h1>
-      <Skeleton className="mt-5 h-11 w-full" />
+      <Skeleton className="mt-5 h-12 w-full" />
       <section className="mt-9 flex flex-wrap gap-4">
         {Array.from({ length: 5 }).map((_, i) => (
           <article key={i} className="community-card">
@@ -18,7 +18,7 @@ function Loading() {
             </div>
             <Skeleton className="mt-3 h-3 w-[250px]" />
             <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-              <Skeleton className="h-7 w-14 rounded-md px-3" />
+              <Skeleton className="h-8 w-[70px] rounded-lg px-3" />
               <Skeleton className="h-7 w-7 rounded-full" />
             </div>
           </article>
