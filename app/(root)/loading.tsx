@@ -5,7 +5,7 @@ function Loading() {
     <>
       <h1 className="head-text text-left">Home</h1>
       <section className="mt-9 flex flex-col gap-10">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <article
             key={i}
             className="flex w-full flex-col rounded-xl bg-dark-2 p-7"
@@ -17,9 +17,9 @@ function Loading() {
                   <div className="thread-card_bar" />
                 </div>
                 <div className="flex w-full flex-col space-y-3">
-                  <Skeleton className="h-5 w-[100px]" />
-                  <Skeleton className="h-4 w-[250px]" />
-                  <Skeleton className="h-4 w-[200px]" />
+                  <Skeleton className="h-5 w-[100px] max-sm:w-[100px]" />
+                  <Skeleton className="h-4 w-[350px] max-sm:w-[200px]" />
+                  <Skeleton className="h-4 w-[250px] max-sm:w-[150px]" />
                 </div>
               </div>
             </div>

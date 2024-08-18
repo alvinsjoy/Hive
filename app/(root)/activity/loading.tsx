@@ -9,7 +9,7 @@ function Loading() {
         {Array.from({ length: 5 }).map((_, i) => (
           <article key={i} className="activity-card">
             <Skeleton className="relative h-5 w-5 rounded-full" />
-            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[250px] max-sm:w-[200px]" />
           </article>
         ))}
       </section>
