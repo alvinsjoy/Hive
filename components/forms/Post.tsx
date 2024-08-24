@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useOrganization } from '@clerk/nextjs';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { usePathname, useRouter } from 'next/navigation';
+import confetti from 'canvas-confetti';
 
 import {
   Form,
@@ -51,17 +52,16 @@ function Post({ userId, threadId, threadText }: Props) {
           path: pathname,
         });
         router.push('/');
+        toast({
+          title: '🎉 Buzz updated',
+          description: 'Your buzz has been updated successfully.',
+          variant: 'default',
+        });
       } catch (error) {
         toast({
           title: '⚠️ Error updating buzz',
           description: 'An error occurred while updating the buzz.',
           variant: 'destructive',
-        });
-      } finally {
-        toast({
-          title: '🎉 Buzz updated',
-          description: 'Your buzz has been updated successfully.',
-          variant: 'default',
         });
       }
     } else {
@@ -73,17 +73,43 @@ function Post({ userId, threadId, threadText }: Props) {
           path: pathname,
         });
         router.push('/');
+        toast({
+          title: '🎉 Buzz posted',
+          description: 'Your buzz has been posted successfully.',
+          variant: 'default',
+        });
+        const end = Date.now() + 2000;
+        const colors = ['#FF6F61', '#40E0D0'];
+
+        const frame = () => {
+          if (Date.now() > end) return;
+
+          confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 0, y: 1 },
+            colors,
+          });
+          confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 1, y: 1 },
+            colors,
+          });
+
+          requestAnimationFrame(frame);
+        };
+
+        frame();
       } catch (error) {
         toast({
           title: '⚠️ Error posting buzz',
           description: 'An error occurred while posting the buzz.',
           variant: 'destructive',
-        });
-      } finally {
-        toast({
-          title: '🎉 Buzz posted',
-          description: 'Your buzz has been posted successfully.',
-          variant: 'default',
         });
       }
     }

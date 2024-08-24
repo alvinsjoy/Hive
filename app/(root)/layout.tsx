@@ -1,7 +1,6 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
-import Head from 'next/head';
 import { dark } from '@clerk/themes';
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from '@/components/ui/toaster';
@@ -33,13 +32,11 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <Head>
-          <script
-            defer
-            src="https://cloud.umami.is/script.js"
-            data-website-id="fc9e67af-05d7-4851-a66e-e07b2a3bb30c"
-          ></script>
-        </Head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="fc9e67af-05d7-4851-a66e-e07b2a3bb30c"
+        ></script>
         <body className={inter.className}>
           <Topbar />
           <main className="flex flex-row">
