@@ -32,11 +32,6 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="fc9e67af-05d7-4851-a66e-e07b2a3bb30c"
-        ></script>
         <body className={inter.className}>
           <Topbar />
           <main className="flex flex-row">
@@ -48,6 +43,11 @@ export default function RootLayout({
           </main>
           <Bottombar />
           <Toaster />
+          <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="fc9e67af-05d7-4851-a66e-e07b2a3bb30c"
+          ></script>
         </body>
       </html>
       <Analytics />
