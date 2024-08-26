@@ -36,9 +36,16 @@ const LeftSidebar = () => {
                 alt={link.label}
                 width={24}
                 height={24}
+                className={isActive ? 'invert' : ''}
               />
 
-              <p className="text-light-1 max-lg:hidden">{link.label}</p>
+              <p
+                className={`${
+                  isActive ? 'text-dark-1' : 'text-light-1'
+                } max-lg:hidden`}
+              >
+                {link.label}
+              </p>
             </Link>
           );
         })}
