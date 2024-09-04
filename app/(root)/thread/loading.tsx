@@ -18,17 +18,14 @@ function Loading() {
           </div>
         </div>
       </article>
-      <div className=" comment-form">
+      <div className="mt-10 flex items-center gap-4 border-y border-y-dark-4 py-5">
         <Skeleton className="relative h-11 w-11 rounded-full" />
         <Skeleton className="flex-1 h-11 w-full rounded-md" />
-        <Skeleton className="h-11 w-[100px] rounded-full" />
+        <Skeleton className="h-11 w-[100px] rounded-3xl px-8 py-2" />
       </div>
       <section className="mt-9 flex flex-col gap-10">
         {Array.from({ length: 3 }).map((_, i) => (
-          <article
-            key={i}
-            className="flex w-full flex-col rounded-xl px-0 xs:px-7"
-          >
+          <article key={i} className="flex w-full flex-col rounded-xl">
             <div className="flex items-start justify-between">
               <div className="flex w-full flex-1 flex-row gap-4">
                 <div className="flex flex-col items-center">
