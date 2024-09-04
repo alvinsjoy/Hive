@@ -6,15 +6,15 @@ function Loading() {
       <div className="flex w-full flex-col justify-start">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Skeleton className="relative h-20 w-20 rounded-full" />
+            <Skeleton className="h-20 w-20 rounded-full" />
             <div className="flex-1">
               <Skeleton className="h-6 w-40" />
               <Skeleton className="h-4 w-20 mt-3" />
             </div>
           </div>
-          <Skeleton className="h-10 w-20 rounded-lg" />
+          <Skeleton className="h-8 w-10 rounded-lg" />
         </div>
-        <Skeleton className="mt-6 h-4 w-1/2" />
+        <Skeleton className="mt-6 h-4 w-3/4" />
         <div className="mt-12 h-0.5 w-full bg-dark-3" />
       </div>
 
@@ -35,7 +35,7 @@ function Loading() {
             <div className="flex items-start justify-between">
               <div className="flex w-full flex-1 flex-row gap-4">
                 <div className="flex flex-col items-center">
-                  <Skeleton className="relative h-11 w-11 rounded-full" />
+                  <Skeleton className="h-11 w-11 rounded-full" />
                   <div className="thread-card_bar" />
                 </div>
                 <div className="flex w-full flex-col space-y-3">
