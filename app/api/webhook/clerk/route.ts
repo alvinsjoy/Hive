@@ -67,7 +67,10 @@ export const POST = async (request: Request) => {
         created_by,
       );
 
-      return NextResponse.json({ message: 'User created' }, { status: 201 });
+      return NextResponse.json(
+        { message: 'Organization created' },
+        { status: 201 },
+      );
     } catch (err) {
       console.log(err);
       return NextResponse.json(
