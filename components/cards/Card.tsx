@@ -151,23 +151,24 @@ function Card({
         </div>
       )}
 
-      {!isComment && community && (
+      {!isComment && (
         <Link
-          href={`/communities/${community.id}`}
+          href={community ? `/communities/${community.id}` : `/thread/${id}`}
           className="mt-5 flex items-center"
         >
           <p className="text-subtle-medium text-gray-1">
             {formatDateString(createdAt)}
             {community && ` - ${community.name} Community`}
           </p>
-
-          <Image
-            src={community.image}
-            alt={community.name}
-            width={14}
-            height={14}
-            className="ml-1 rounded-full object-cover"
-          />
+          {community && (
+            <Image
+              src={community.image}
+              alt={community.name}
+              width={14}
+              height={14}
+              className="ml-1 rounded-full object-cover"
+            />
+          )}
         </Link>
       )}
     </article>
