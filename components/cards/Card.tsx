@@ -154,7 +154,7 @@ function Card({
       {!isComment && (
         <Link
           href={community ? `/communities/${community.id}` : `/thread/${id}`}
-          className="mt-5 flex items-center"
+          className="mt-5 ml-auto flex items-center"
         >
           <p className="text-subtle-medium text-gray-1">
             {formatDateString(createdAt)}
