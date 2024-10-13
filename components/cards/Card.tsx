@@ -180,7 +180,7 @@ function Card({
               ))}
 
               <Link href={`/thread/${id}`}>
-                <p className="ml-2 text-subtle-medium text-gray-1">
+                <p className="ml-1 text-subtle-medium text-gray-1">
                   {comments.length} repl{comments.length > 1 ? 'ies' : 'y'}
                 </p>
               </Link>
@@ -192,7 +192,7 @@ function Card({
           >
             <p className="text-subtle-medium text-gray-1">
               {formatDateString(createdAt)}
-              {community && ` - ${community.name} Community`}
+              {community && ` - ${community.name}`}
             </p>
             {community && (
               <Image
