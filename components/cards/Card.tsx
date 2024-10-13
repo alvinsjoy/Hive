@@ -130,46 +130,49 @@ function Card({
         </div>
       </div>
 
-      {!isComment && comments.length > 0 && (
-        <div className="ml-1 mt-3 flex items-center gap-2">
-          {comments.slice(0, 2).map((comment, index) => (
-            <Image
-              key={index}
-              src={comment.author.image}
-              alt={`user_${index}`}
-              width={24}
-              height={24}
-              className={`${index !== 0 && '-ml-5'} rounded-full object-cover`}
-            />
-          ))}
+      {!isComment && (
+        <div className="flex items-center mt-2">
+          {comments.length > 0 && (
+            <div className="ml-1 gap-2 flex items-center">
+              {comments.slice(0, 2).map((comment, index) => (
+                <Image
+                  key={index}
+                  src={comment.author.image}
+                  alt={`user_${index}`}
+                  width={24}
+                  height={24}
+                  className={`${
+                    index !== 0 && '-ml-5'
+                  } rounded-full object-cover`}
+                />
+              ))}
 
-          <Link href={`/thread/${id}`}>
-            <p className="mt-1 text-subtle-medium text-gray-1">
-              {comments.length} repl{comments.length > 1 ? 'ies' : 'y'}
+              <Link href={`/thread/${id}`}>
+                <p className="ml-2 text-subtle-medium text-gray-1">
+                  {comments.length} repl{comments.length > 1 ? 'ies' : 'y'}
+                </p>
+              </Link>
+            </div>
+          )}
+          <Link
+            href={community ? `/communities/${community.id}` : `/thread/${id}`}
+            className="ml-auto flex items-center"
+          >
+            <p className="text-subtle-medium text-gray-1">
+              {formatDateString(createdAt)}
+              {community && ` - ${community.name} Community`}
             </p>
+            {community && (
+              <Image
+                src={community.image}
+                alt={community.name}
+                width={14}
+                height={14}
+                className="ml-1 rounded-full object-cover"
+              />
+            )}
           </Link>
         </div>
-      )}
-
-      {!isComment && (
-        <Link
-          href={community ? `/communities/${community.id}` : `/thread/${id}`}
-          className="mt-5 ml-auto flex items-center"
-        >
-          <p className="text-subtle-medium text-gray-1">
-            {formatDateString(createdAt)}
-            {community && ` - ${community.name} Community`}
-          </p>
-          {community && (
-            <Image
-              src={community.image}
-              alt={community.name}
-              width={14}
-              height={14}
-              className="ml-1 rounded-full object-cover"
-            />
-          )}
-        </Link>
       )}
     </article>
   );
