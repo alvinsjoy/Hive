@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { formatDateString } from '@/lib/utils';
 import DeleteThread from '../forms/DeleteThread';
 import EditThread from '../forms/EditThread';
+import Share from '../shared/Share';
 
 interface Props {
   id: string;
@@ -82,26 +83,22 @@ function Card({
                 <Link href={`/thread/${id}`}>
                   <Image
                     src="/assets/reply.svg"
-                    alt="heart"
+                    alt="reply"
                     width={24}
                     height={24}
                     className="cursor-pointer object-contain"
                   />
                 </Link>
-                <Image
-                  src="/assets/repost.svg"
-                  alt="heart"
-                  width={24}
-                  height={24}
-                  className="cursor-pointer object-contain"
-                />
-                <Image
-                  src="/assets/share.svg"
-                  alt="heart"
-                  width={24}
-                  height={24}
-                  className="cursor-pointer object-contain"
-                />
+                <Link href={`/thread/${id}`}>
+                  <Image
+                    src="/assets/repost.svg"
+                    alt="repost"
+                    width={24}
+                    height={24}
+                    className="cursor-pointer object-contain"
+                  />
+                </Link>
+                <Share threadId={JSON.stringify(id)} />
               </div>
 
               {isComment && comments.length > 0 && (
