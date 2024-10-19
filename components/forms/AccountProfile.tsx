@@ -82,17 +82,16 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       } else {
         router.push('/');
       }
+      toast({
+        title: 'Profile updated successfully 🎉',
+        description: 'Your profile has been updated successfully.',
+        variant: 'default',
+      });
     } catch (error) {
       toast({
         title: 'Error updating profile ⚠️',
         description: 'There was a problem with your request.',
         variant: 'destructive',
-      });
-    } finally {
-      toast({
-        title: 'Profile updated successfully 🎉',
-        description: 'Your profile has been updated successfully.',
-        variant: 'default',
       });
     }
   };
