@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { formatDateString } from '@/lib/utils';
 import DeleteThread from '../forms/DeleteThread';
 import EditThread from '../forms/EditThread';
-import Share from '../shared/Share';
+import Share from '../forms/Share';
 
 interface Props {
   id: string;
@@ -83,16 +83,18 @@ function Card({
 
             <div className={`${isComment && 'mb-10'} mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
-                <ReactThread
-                  threadId={id}
-                  currentUserId={currentUserId}
-                  interactState={reactState}
-                  parentId={parentId}
-                  isComment={isComment}
+                <Image
+                  src="/assets/heart-gray.svg"
+                  title="Like"
+                  alt="heart"
+                  width={24}
+                  height={24}
+                  className="cursor-pointer object-contain"
                 />
                 <Link href={`/thread/${id}`}>
                   <Image
                     src="/assets/reply.svg"
+                    title="Reply"
                     alt="reply"
                     width={24}
                     height={24}
@@ -102,6 +104,7 @@ function Card({
                 <Link href={`/thread/${id}`}>
                   <Image
                     src="/assets/repost.svg"
+                    title="Repost"
                     alt="repost"
                     width={24}
                     height={24}
