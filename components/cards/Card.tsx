@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { formatDateString } from '@/lib/utils';
 import DeleteThread from '../forms/DeleteThread';
 import EditThread from '../forms/EditThread';
-import Share from '../shared/Share';
+import Share from '../forms/Share';
 
 interface Props {
   id: string;
@@ -75,6 +75,7 @@ function Card({
               <div className="flex gap-3.5">
                 <Image
                   src="/assets/heart-gray.svg"
+                  title="Like"
                   alt="heart"
                   width={24}
                   height={24}
@@ -83,6 +84,7 @@ function Card({
                 <Link href={`/thread/${id}`}>
                   <Image
                     src="/assets/reply.svg"
+                    title="Reply"
                     alt="reply"
                     width={24}
                     height={24}
@@ -92,6 +94,7 @@ function Card({
                 <Link href={`/thread/${id}`}>
                   <Image
                     src="/assets/repost.svg"
+                    title="Repost"
                     alt="repost"
                     width={24}
                     height={24}

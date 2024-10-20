@@ -13,15 +13,15 @@ const Share = ({ threadId }: Props) => {
         .writeText(`${window.location.origin}/thread/${JSON.parse(threadId)}`)
         .then(() =>
           toast({
-            title: 'Copied to clipboard',
-            description: 'You can now share this buzz with your friends!',
+            title: 'Copied to clipboard 📋',
+            description: 'You can now share this buzz with your friends.',
             variant: 'default',
           }),
         )
         .catch((err) => {
           console.error('Failed to copy text: ', err);
           toast({
-            title: 'Failed to copy',
+            title: 'Failed to copy ⚠️',
             description: 'Please try again later.',
             variant: 'destructive',
           });
@@ -31,6 +31,7 @@ const Share = ({ threadId }: Props) => {
   return (
     <Image
       src="/assets/share.svg"
+      title="Share"
       alt="share"
       width={24}
       height={24}
