@@ -14,6 +14,10 @@ Hive is a modern web application designed to enhance community engagement and so
 - **Community Tabs:** View buzzes made in the community and members of the community.
 - **Suggested Communities and Profiles:** Explore new communities and profiles.
 
+## Working
+
+https://github.com/user-attachments/assets/c15aab1b-0741-4182-978b-0bc23188ceaf
+
 ## Technologies Used
 
 - [TypeScript](https://www.typescriptlang.org)
