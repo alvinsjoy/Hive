@@ -46,15 +46,15 @@ export default function RootLayout({
             </main>
             <Bottombar />
             <Toaster />
+            <script
+              defer
+              src="https://cloud.umami.is/script.js"
+              data-website-id="fc9e67af-05d7-4851-a66e-e07b2a3bb30c"
+            ></script>
+            <Analytics />
           </Suspense>
-          <script
-            defer
-            src="https://cloud.umami.is/script.js"
-            data-website-id="fc9e67af-05d7-4851-a66e-e07b2a3bb30c"
-          ></script>
         </body>
       </html>
-      <Analytics />
     </ClerkProvider>
   );
 }
